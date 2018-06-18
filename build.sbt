@@ -1,4 +1,6 @@
-name := "SparkTwoExperiments"
+name := "spark-spikes"
+
+organization := "etc.bruno"
 
 version := "1.0"
 
