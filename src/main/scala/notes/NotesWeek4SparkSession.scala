@@ -31,15 +31,24 @@ object NotesWeek4SparkSession extends App {
   val locationDF: DataFrame = locations.toDF("id", "location")
   locationDF.show(10)
 
+  println("#locationDF.printSchema()")
+  locationDF.printSchema()
+
   case class MyLocation(myId: Long, myDesc: String)
 
   val myLocationsRDD: RDD[MyLocation] = locations.map(t => MyLocation(t._1, t._2))
   val myLocationDF: DataFrame = myLocationsRDD.toDF()
 
+  println("#myLocationDF.printSchema()")
+  myLocationDF.printSchema()
+
   myLocationDF.show(10)
 
   val peopleDF = spark.read.json("src/main/resources/people.json")
   peopleDF.show(5)
+
+  println("#peopleDF.printSchema()")
+  peopleDF.printSchema()
 
   peopleDF.createOrReplaceTempView("people_table")
 
